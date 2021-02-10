@@ -17,9 +17,7 @@ const dep1 = { a: 1 };
 const dep2 = [ 4 ];
 
 let result1 = memoized([arg1, arg2], [dep1, dep2]);
-let result2 = memoized([arg3, arg4], [dep1, dep2]);
-let result3 = memoized([arg5, arg6], [dep1, dep2])
-
-result1 === result2 // true, this is the same as returned before.
+let result2 = memoized([arg3, arg4], [dep1, dep2]); // `expensive` is not called again, result2 === result1.
+let result3 = memoized([arg3, arg4], [dep3, dep4]); // `expensive` is called again.
 ```
 
