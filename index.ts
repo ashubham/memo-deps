@@ -1,8 +1,8 @@
 
-export function memo(func: Function) {
+export function memo<T extends (...args: any[]) => any>(func: T) {
     let cachedDeps: any[];
     let cachedVal: any;
-    return function (args: any[], deps: any[]) {
+    return function (args: Parameters<T>, deps: any[]) {
         if (areArraysShallowEqual(deps, cachedDeps)) {
             return cachedVal;
         }
